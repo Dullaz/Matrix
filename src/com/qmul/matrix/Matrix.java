@@ -48,12 +48,30 @@ public class Matrix {
     
     /**
      * Gets the value at a certain position in the matrix
-     * @param x Column
-     * @param y Row
-     * @return The value at (x,y) in the matrix
+     * @param x Row
+     * @param y Column
+     * @return The value at row x and column y in the matrix
      */
     public int get(int x, int y){
         return A[x][y];
+    }
+    
+    /**
+     *
+     * @return Number of rows
+     */
+    public int getRows()
+    {
+        return r;
+    }
+    
+    /**
+     *
+     * @return Number of columns
+     */
+    public int getColumns()
+    {
+        return c;
     }
     
     /**
@@ -62,12 +80,12 @@ public class Matrix {
      */
     public Matrix transpose()
     {
-        int[][] transp = new int[this.c][this.r];
-        for(int i = 0;i<c;i++)
+        int[][] transp = new int[getColumns()][getRows()];
+        for(int i = 0;i<getRows();i++)
         {
-            for(int j=0;j<r;j++)
+            for(int j=0;j<getColumns();j++)
             {
-                transp[j][i] = A[i][j];
+                transp[j][i] = get(i,j);
             }
         }
         return (new Matrix(transp));
@@ -80,12 +98,32 @@ public class Matrix {
      */
     public Matrix add(Matrix matrix)
     {
-        if(matrix.r == r && matrix.c == c)
+        if(matrix.getRows() == getRows() && matrix.getColumns() == getColumns())
         {
-            int[][] sum = new int[r][c];
-            for(int i = 0; i < r; i++)
-                for(int j = 0; j < c; j++)
+            int[][] sum = new int[getRows()][getColumns()];
+            for(int i = 0; i < getRows(); i++)
+                for(int j = 0; j < getColumns(); j++)
                     sum[i][j] = get(i,j) + matrix.get(i, j);
+            return new Matrix(sum);
+        }else
+        {
+            throw new IllegalArgumentException("Matrices must be of the same size!");
+        }
+    }
+    
+    /**
+     * Subtracts two matrices of the same size
+     * @param matrix The matrix to be subtracted
+     * @return The difference of this and the specified matrix
+     */
+    public Matrix sub(Matrix matrix)
+    {
+        if(matrix.getRows() == getRows() && matrix.getColumns() == getColumns())
+        {
+            int[][] sum = new int[getRows()][getColumns()];
+            for(int i = 0; i < getRows(); i++)
+                for(int j = 0; j < getRows(); j++)
+                    sum[i][j] = get(i,j) - matrix.get(i, j);
             return new Matrix(sum);
         }else
         {
