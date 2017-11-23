@@ -29,12 +29,18 @@ public class Matrix {
             }
         }
     }
+    
     public Matrix(int r, int c)
     {
         this.r = r;
         this.c = c;
         this.A = new int[r][c];
     }
+    
+    public int get(int x, int y){
+        return A[x][y];
+    }
+    
     public Matrix transpose()
     {
         int[][] transp = new int[this.c][this.r];
@@ -46,5 +52,20 @@ public class Matrix {
             }
         }
         return (new Matrix(transp));
+    }
+    
+    public Matrix add(Matrix matrix)
+    {
+        if(matrix.r == r && matrix.c == c)
+        {
+            int[][] sum = new int[r][c];
+            for(int i = 0; i < r; i++)
+                for(int j = 0; j < c; j++)
+                    sum[i][j] = get(i,j) + matrix.get(i, j);
+            return new Matrix(sum);
+        }else
+        {
+            throw new IllegalArgumentException("Matrices must be of the same size!");
+        }
     }
 }
