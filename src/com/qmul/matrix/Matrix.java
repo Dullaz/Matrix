@@ -51,6 +51,11 @@ public class Matrix {
         this(s,s);
     }
     
+    /**
+     * Creates an identity matrix of size s
+     * @param s The size of the matrix
+     * @return Identity matrix of size s
+     */
     public static Matrix identity(int s){
         int[][] A = new int[s][s];
         for(int i = 0; i < s; i++)
