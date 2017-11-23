@@ -43,6 +43,24 @@ public class Matrix {
     }
     
     /**
+     * Creates a square matrix of the specified size
+     * @param s Size
+     */
+    public Matrix(int s)
+    {
+        this(s,s);
+    }
+    
+    public static Matrix identity(int s){
+        int[][] A = new int[s][s];
+        for(int i = 0; i < s; i++)
+        {
+            A[i][i] = 1;
+        }
+        return new Matrix(A);
+    }
+    
+    /**
      * Gets the value at a certain position in the matrix
      * @param x Row
      * @param y Column
