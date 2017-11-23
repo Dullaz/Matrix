@@ -24,12 +24,8 @@ public class Matrix {
         c = A[0].length;
         
         for (int[] A1 : A) {
-            if (A1 == null) {
-                //null
-            } else {
-                if (A1.length != c) {
-                    //wrong length
-                }
+            if (A1.length != c) {
+                throw new IllegalArgumentException("Every array must be the same size!");
             }
         }
     }
