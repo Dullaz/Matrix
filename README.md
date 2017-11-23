@@ -14,6 +14,7 @@ TODO:
 1. Identity
 1. Determinant
 1. Invert
+1. ~~Transpose~~
 1. Elementary Row Operations
    1. Row Swap
    1. Row Addition
