@@ -2,7 +2,7 @@
 
 TODO:
 
-1. Matrix Addition
+1. Matrix Addition (Kaamil)
   1.1 Addition
   1.2 Subtraction
 2. Matrix Multiplication
