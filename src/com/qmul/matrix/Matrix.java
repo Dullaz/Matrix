@@ -13,6 +13,10 @@ public class Matrix {
     private int[][] A;
     private int r,c;
     
+    /**
+     * Creates a new matrix from the 2D array
+     * @param A 2D array representing the matrix
+     */
     public Matrix(int[][] A)
     {
         this.A = A;
@@ -30,6 +34,11 @@ public class Matrix {
         }
     }
     
+    /**
+     * Creates a matrix of the specified size filled with 0s
+     * @param r Number of rows
+     * @param c Number of columns
+     */
     public Matrix(int r, int c)
     {
         this.r = r;
@@ -37,10 +46,20 @@ public class Matrix {
         this.A = new int[r][c];
     }
     
+    /**
+     * Gets the value at a certain position in the matrix
+     * @param x Column
+     * @param y Row
+     * @return The value at (x,y) in the matrix
+     */
     public int get(int x, int y){
         return A[x][y];
     }
     
+    /**
+     * 
+     * @return The transpose of the given matrix
+     */
     public Matrix transpose()
     {
         int[][] transp = new int[this.c][this.r];
@@ -54,6 +73,11 @@ public class Matrix {
         return (new Matrix(transp));
     }
     
+    /**
+     * Adds two matrices of the same size
+     * @param matrix The matrix to be added
+     * @return The sum of this and the specified matrix
+     */
     public Matrix add(Matrix matrix)
     {
         if(matrix.r == r && matrix.c == c)
