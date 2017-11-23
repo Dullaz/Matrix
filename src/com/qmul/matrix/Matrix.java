@@ -94,6 +94,22 @@ public class Matrix {
     }
     
     /**
+     * @param i row to return
+     * @return A selected row
+     */
+    private int[] getRow(int i)
+    {
+        return A[i];
+    }
+    
+    /**
+     * @return 2D integer array of the matrix
+     */
+    private int[][] getArray()
+    {
+        return A;
+    }
+    /**
      * 
      * @return The transpose of the given matrix
      */
@@ -148,5 +164,19 @@ public class Matrix {
         {
             throw new IllegalArgumentException("Matrices must be of the same size!");
         }
+    }
+    
+    /**
+     * Elementary operation : Row swap
+     * @param rowA The row to swap
+     * @param rowB The row to swap
+     * @return Matrix with rows swapped
+     */
+    public Matrix swap(int rowA, int rowB)
+    {
+        int[][] swapped = getArray();
+        swapped[rowA] = getRow(rowB);
+        swapped[rowB] = getRow(rowA);
+        return new Matrix(swapped);
     }
 }
