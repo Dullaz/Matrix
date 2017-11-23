@@ -16,7 +16,7 @@ TODO:
 1. Invert
 1. ~~Transpose~~
 1. Elementary Row Operations
-   1.  ̶R̶̶̶o̶̶̶w̶̶̶ ̶̶̶S̶̶̶w̶̶̶a̶̶̶p̶̶̶
+   1.  ̶~~Row Swap~~
    1. Row Addition
    1. Row Scalar Multiplication
 1. Gauss
