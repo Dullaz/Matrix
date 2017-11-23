@@ -5,7 +5,7 @@ TODO:
 1. Matrix Addition (Kaamil)
    1. Addition
    1. Subtraction
-1. Scalar Multiplication
+1. Scalar Multiplication (Kaamil)
    1. Multiplication
    1. Division
 1. Matrix Multiplication
