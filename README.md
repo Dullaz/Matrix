@@ -18,5 +18,5 @@ TODO:
 7. Gauss
 8. Gauss-Jordan
 9. Invert larger than 2x2 using Identity technique
-
+10. Finding determinant for larger than 2x2
 
