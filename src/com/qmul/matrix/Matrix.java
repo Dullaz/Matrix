@@ -19,14 +19,19 @@ public class Matrix {
      */
     public Matrix(int[][] A)
     {
-        this.A = A;
         r = A.length;
+        if(r == 0){
+            throw new IllegalArgumentException("The array may not be empty!");
+        }
+        
         c = A[0].length;
         
-        for (int[] A1 : A) {
-            if (A1.length != c) {
-                throw new IllegalArgumentException("Every array must be the same size!");
+        this.A = new int[A.length][];
+        for(int i = 0; i < A.length; i++){
+            if(A[i].length != c){
+                throw new IllegalArgumentException("Every array must have the same length!");
             }
+            this.A[i] = A[i].clone();
         }
     }
     
@@ -175,8 +180,13 @@ public class Matrix {
     public Matrix swap(int rowA, int rowB)
     {
         int[][] swapped = getArray();
-        swapped[rowA] = getRow(rowB);
+        int[] temp;
+        temp = getRow(rowB);
         swapped[rowB] = getRow(rowA);
-        return new Matrix(swapped);
+        swapped[rowA] = temp;
+        Matrix swappedM = new Matrix(swapped);
+        swapped[rowA] = getRow(rowB);
+        swapped[rowB] = temp;
+        return swappedM;
     }
 }
