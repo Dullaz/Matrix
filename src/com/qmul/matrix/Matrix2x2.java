@@ -21,5 +21,10 @@ public class Matrix2x2 extends Matrix{
         }
     }
     
-    
+    @Override
+    public int determinant(){
+        int det;
+        det = this.get(0,0)*this.get(1,1) - this.get(0,1)*this.get(1,0);
+        return det;
+    }
 }

@@ -192,4 +192,8 @@ public class Matrix {
     public Matrix inverse(){
         return this; //todo
     }
+    
+    public int determinant(){
+        return 0; //todo
+    }
 }
