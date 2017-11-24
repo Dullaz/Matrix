@@ -12,8 +12,8 @@ TODO:
    1. Multiplication
    1. Division (This is not really clean cut like normal division, check first)
 1. ~~Identity (Kaamil)~~
-1. Determinant
-1. Invert
+1. Determinant (Bavan)
+1. Invert (Bavan)
 1. ~~Transpose~~
 1. Elementary Row Operations
    1.  ̶~~Row Swap~~
