@@ -10,8 +10,8 @@ package com.qmul.matrix;
  * @author Windows 10
  */
 public class Matrix {
-    private int[][] A;
-    private int r,c;
+    protected int[][] A;
+    protected int r,c;
     
     /**
      * Creates a new matrix from the 2D array
@@ -188,5 +188,8 @@ public class Matrix {
         swapped[rowA] = getRow(rowB);
         swapped[rowB] = temp;
         return swappedM;
+    }
+    public Matrix inverse(){
+        return this; //todo
     }
 }
