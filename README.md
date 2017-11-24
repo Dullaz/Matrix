@@ -13,7 +13,7 @@ TODO:
    1. Division (This is not really clean cut like normal division, check first)
 1. ~~Identity (Kaamil)~~
 1. ~~Determinant 2x2 (Bavan)~~
-1. Invert 2x2 (Bavan)
+1. ~~Invert 2x2~~ Matrix mathods need to be generic for this to  work (Bavan)
 1. ~~Transpose~~
 1. Elementary Row Operations
    1.  ̶~~Row Swap~~
