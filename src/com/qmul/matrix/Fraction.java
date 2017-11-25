@@ -4,7 +4,7 @@ package com.qmul.matrix;
  *
  * @author Abdullah Hasan
  */
-public class Fraction {
+public class Fraction extends Number{
     private int d,n;
     
     
@@ -129,14 +129,6 @@ public class Fraction {
         return Integer.toString(this.n) + "/" + Integer.toString(this.d);
     }
     
-    /**
-     * Returns decimal form of fraction
-     * @return float
-     */
-    public float toDecimal()
-    {
-        return n/d;
-    }
 
     /**
      * Compares two fractions
@@ -167,6 +159,26 @@ public class Fraction {
     public int getNumer()
     {
         return n;
+    }
+
+    @Override
+    public int intValue() {
+        return n/d;
+    }
+
+    @Override
+    public long longValue() {
+        return n/d;
+    }
+
+    @Override
+    public float floatValue() {
+      return n/d;
+    }
+
+    @Override
+    public double doubleValue() {
+      return n/d;
     }
     
     
