@@ -10,14 +10,14 @@ package com.qmul.matrix;
  * @author Windows 10
  */
 public class Matrix {
-    protected int[][] A;
+    protected Fraction[][] A;
     protected int r,c;
     
     /**
      * Creates a new matrix from the 2D array
      * @param A 2D array representing the matrix
      */
-    public Matrix(int[][] A)
+    public Matrix(Fraction[][] A)
     {
         r = A.length;
         if(r == 0){
@@ -26,7 +26,7 @@ public class Matrix {
         
         c = A[0].length;
         
-        this.A = new int[A.length][];
+        this.A = new Fraction[A.length][];
         for(int i = 0; i < A.length; i++){
             if(A[i].length != c){
                 throw new IllegalArgumentException("Every array must have the same length!");
@@ -44,7 +44,7 @@ public class Matrix {
     {
         this.r = r;
         this.c = c;
-        this.A = new int[r][c];
+        this.A = new Fraction[r][c];
     }
     
     /**
@@ -62,10 +62,10 @@ public class Matrix {
      * @return Identity matrix of size s
      */
     public static Matrix identity(int s){
-        int[][] A = new int[s][s];
+        Fraction[][] A = new Fraction[s][s];
         for(int i = 0; i < s; i++)
         {
-            A[i][i] = 1;
+            A[i][i] = new Fraction(1,1);
         }
         return new Matrix(A);
     }
@@ -76,7 +76,7 @@ public class Matrix {
      * @param y Column
      * @return The value at row x and column y in the matrix
      */
-    public int get(int x, int y){
+    public Fraction get(int x, int y){
         return A[x][y];
     }
     
@@ -102,7 +102,7 @@ public class Matrix {
      * @param i row to return
      * @return A selected row
      */
-    private int[] getRow(int i)
+    private Fraction[] getRow(int i)
     {
         return A[i];
     }
@@ -110,7 +110,7 @@ public class Matrix {
     /**
      * @return 2D integer array of the matrix
      */
-    private int[][] getArray()
+    private Fraction[][] getArray()
     {
         return A;
     }
@@ -120,7 +120,7 @@ public class Matrix {
      */
     public Matrix transpose()
     {
-        int[][] transp = new int[getColumns()][getRows()];
+        Fraction[][] transp = new Fraction[getColumns()][getRows()];
         for(int i = 0;i<getRows();i++)
         {
             for(int j=0;j<getColumns();j++)
@@ -140,10 +140,10 @@ public class Matrix {
     {
         if(matrix.getRows() == getRows() && matrix.getColumns() == getColumns())
         {
-            int[][] sum = new int[getRows()][getColumns()];
+            Fraction[][] sum = new Fraction[getRows()][getColumns()];
             for(int i = 0; i < getRows(); i++)
                 for(int j = 0; j < getColumns(); j++)
-                    sum[i][j] = get(i,j) + matrix.get(i, j);
+                    sum[i][j] = get(i,j).add(matrix.get(i, j));
             return new Matrix(sum);
         }else
         {
@@ -160,10 +160,10 @@ public class Matrix {
     {
         if(matrix.getRows() == getRows() && matrix.getColumns() == getColumns())
         {
-            int[][] sum = new int[getRows()][getColumns()];
+            Fraction[][] sum = new Fraction[getRows()][getColumns()];
             for(int i = 0; i < getRows(); i++)
                 for(int j = 0; j < getRows(); j++)
-                    sum[i][j] = get(i,j) - matrix.get(i, j);
+                    sum[i][j] = get(i,j).subtract(matrix.get(i, j));
             return new Matrix(sum);
         }else
         {
@@ -179,8 +179,8 @@ public class Matrix {
      */
     public Matrix swap(int rowA, int rowB)
     {
-        int[][] swapped = getArray();
-        int[] temp;
+        Fraction[][] swapped = getArray();
+        Fraction[] temp;
         temp = getRow(rowB);
         swapped[rowB] = getRow(rowA);
         swapped[rowA] = temp;
@@ -193,7 +193,7 @@ public class Matrix {
         return this; //todo
     }
     
-    public int determinant(){
-        return 0; //todo
+    public Fraction determinant(){
+        return new Fraction(); //todo
     }
 }

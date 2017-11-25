@@ -14,7 +14,7 @@ public class Matrix2x2 extends Matrix{
     public Matrix2x2(){
         super(2);
     }
-    public Matrix2x2(int[][] A){
+    public Matrix2x2(Fraction[][] A){
         super(A);
         if(A.length != 2 || A[0].length != 2){
             throw new IllegalArgumentException("Every 2x2 matrix must have 2 rows and 2 columns");
@@ -22,21 +22,21 @@ public class Matrix2x2 extends Matrix{
     }
     
     @Override
-    public int determinant(){
-        int det;
-        det = this.get(0,0)*this.get(1,1) - this.get(0,1)*this.get(1,0);
-        return det;
+    public Fraction determinant(){
+        Fraction det;
+        det = this.get(0,0).multiply(this.get(1,1)).subtract(this.get(0,1).multiply(this.get(1,0)));
+        return det.invert();
     }
     
     @Override
     public Matrix2x2 inverse(){
-        int[][] invertedMatrix = new int[2][2];
-        int det = this.determinant();
-        if(det!=0){
-            invertedMatrix[0][0] = (1/det)*this.get(1, 1);
-            invertedMatrix[0][1] = (1/det)*(-1)*this.get(0,1);
-            invertedMatrix[1][0] = (1/det)*(-1)*this.get(1,0);
-            invertedMatrix[1][1] = (1/det)*this.get(0,0);
+        Fraction[][] invertedMatrix = new Fraction[2][2];
+        Fraction det = this.determinant();
+        if(det.toDecimal()!=0){
+            invertedMatrix[0][0] = det.multiply(this.get(1, 1));
+            invertedMatrix[0][1] = det.multiply(this.get(0,1)).negate();
+            invertedMatrix[1][0] = det.multiply(this.get(1,0));
+            invertedMatrix[1][1] = det.multiply(this.get(0,0)).negate();
         }
         else{
             throw new ArithmeticException("Inverse cant be calculated if the determinant is 0");

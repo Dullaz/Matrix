@@ -15,7 +15,7 @@ public class Fraction {
         
     }
     
-    public Fraction(int d, int n)
+    public Fraction(int n, int d)
     {
         if(d == 0)
             throw new IllegalArgumentException("Denominator can't be zero");
@@ -97,6 +97,15 @@ public class Fraction {
         return new Fraction((a/gcd),(b/gcd));
     }
     
+    public Fraction invert()
+    {
+        return new Fraction(this.d,this.n);
+    }
+    
+    public Fraction negate()
+    {
+        return new Fraction(-this.n,this.d);
+    }
     /**
      * Finds greatest common divisor of two integers using Euclidean algorithm
      * @param a first integer 
