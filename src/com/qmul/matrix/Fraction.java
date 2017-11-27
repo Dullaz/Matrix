@@ -15,6 +15,12 @@ public class Fraction extends Number{
         
     }
     
+    public Fraction(Fraction A)
+    {
+        this.n = A.n;
+        this.d = A.d;
+    }
+    
     public Fraction(int n, int d)
     {
         if(d == 0)

@@ -77,7 +77,8 @@ public class Matrix {
      * @return The value at row x and column y in the matrix
      */
     public Fraction get(int x, int y){
-        return A[x][y];
+        
+        return new Fraction(A[x][y]);
     }
     
     /**
@@ -104,7 +105,12 @@ public class Matrix {
      */
     private Fraction[] getRow(int i)
     {
-        return A[i];
+        Fraction[] newRow = new Fraction[c];
+        for(int j=0;j<c;j++)
+        {
+            newRow[j] = A[i][j];
+        }
+        return newRow;
     }
     
     /**
@@ -112,7 +118,15 @@ public class Matrix {
      */
     private Fraction[][] getArray()
     {
-        return A;
+        Fraction[][] newMatrix = new Fraction[r][c];
+        for(int i=0;i<r;i++)
+        {
+            for(int j=0;j<c;j++)
+            {
+                newMatrix[r][c] = this.get(i, j);
+            }
+        }
+        return newMatrix;
     }
     /**
      * 
@@ -179,25 +193,62 @@ public class Matrix {
      */
     public Matrix swap(int rowA, int rowB)
     {
-        Fraction[][] swapped = getArray();
-        Fraction[] temp;
-        temp = getRow(rowB);
-        swapped[rowB] = getRow(rowA);
-        swapped[rowA] = temp;
-        Matrix swappedM = new Matrix(swapped);
-        swapped[rowA] = getRow(rowB);
-        swapped[rowB] = temp;
-        return swappedM;
+        Fraction[][] newMatrix = getArray();
+        newMatrix[rowA] = getRow(rowB);
+        newMatrix[rowB] = getRow(rowA);
+        return new Matrix(newMatrix);
     }
     
+    /**
+     * 
+     * @param rowA Row to add to
+     * @param rowB Row to add from
+     * @param scale scalar of rowB
+     * @return Matrix with rowA modified
+     */
+    public Matrix addRow(int rowA, int rowB, Fraction scale)
+    {
+        Fraction[] scaledRow = scalar(getRow(rowB),scale);
+        Fraction[][] newMatrix = getArray();
+        
+        for(int i=0;i<c;i++)
+        {
+            newMatrix[rowA][i] = newMatrix[rowA][i].multiply(scaledRow[i]);
+        }
+        return new Matrix(newMatrix);
+        
+    }
+    
+    /**
+     * 
+     * @param rowA row to scale
+     * @param scale scale factor
+     * @return matrix with rowA modified
+     */
+    public Matrix scaleRow(int rowA, Fraction scale)
+    {
+        Fraction[][] newMatrix = getArray();
+        newMatrix[rowA] = scalar(newMatrix[rowA],scale);
+        return new Matrix(newMatrix);
+    }
+    
+    /**
+     * 
+     * @param row Fraction[] to scale up
+     * @param scale scale factor
+     * @return Fraction[] with all fractions scaled
+     */
     public Fraction[] scalar(Fraction[] row, Fraction scale)
     {
         Fraction[] newRow = new Fraction[row.length];
         for(int i=0;i<row.length;i++)
         {
-            
+           newRow[i] = row[i].multiply(scale); 
         }
+        return newRow;
     }
+    
+    
     public Matrix inverse(){
         
         return this; //todo
