@@ -189,7 +189,17 @@ public class Matrix {
         swapped[rowB] = temp;
         return swappedM;
     }
+    
+    public Fraction[] scalar(Fraction[] row, Fraction scale)
+    {
+        Fraction[] newRow = new Fraction[row.length];
+        for(int i=0;i<row.length;i++)
+        {
+            
+        }
+    }
     public Matrix inverse(){
+        
         return this; //todo
     }
     
