@@ -196,4 +196,8 @@ public class Matrix {
     public Fraction determinant(){
         return new Fraction(); //todo
     }
+    
+    public Matrix scalarMult(int scalar){
+        return this;
+    }
 }
