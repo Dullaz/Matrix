@@ -132,6 +132,8 @@ public class Fraction extends Number{
     @Override
     public String toString()
     {
+        
+        //if(this.d == 1) return Integer.toString(this.n);
         return Integer.toString(this.n) + "/" + Integer.toString(this.d);
     }
     

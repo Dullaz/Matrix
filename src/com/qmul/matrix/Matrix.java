@@ -123,7 +123,7 @@ public class Matrix {
         {
             for(int j=0;j<c;j++)
             {
-                newMatrix[r][c] = this.get(i, j);
+                newMatrix[i][j] = this.get(i, j);
             }
         }
         return newMatrix;
@@ -145,6 +145,21 @@ public class Matrix {
         return (new Matrix(transp));
     }
     
+    @Override
+    public String toString()
+    {
+        String s = "";
+        for(Fraction[] B: A)
+        {
+            s += "[";
+            for(Fraction C:B)
+            {
+                s += C.toString() + " ";
+            }
+            s += "]\n";
+        }
+        return s;
+    }
     /**
      * Adds two matrices of the same size
      * @param matrix The matrix to be added
@@ -213,7 +228,7 @@ public class Matrix {
         
         for(int i=0;i<c;i++)
         {
-            newMatrix[rowA][i] = newMatrix[rowA][i].multiply(scaledRow[i]);
+            newMatrix[rowA][i] = newMatrix[rowA][i].add(scaledRow[i]);
         }
         return new Matrix(newMatrix);
         
