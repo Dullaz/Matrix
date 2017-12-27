@@ -190,15 +190,7 @@ public class Matrix {
         return swappedM;
     }
     
-    public Fraction[] scalar(Fraction[] row, Fraction scale)
-    {
-        Fraction[] newRow = new Fraction[row.length];
-        for(int i=0;i<row.length;i++)
-        {
-            
-        }
-    }
-    public Matrix inverse(){
+        public Matrix inverse(){
         
         return this; //todo
     }
@@ -207,7 +199,15 @@ public class Matrix {
         return new Fraction(); //todo
     }
     
-    public Matrix scalarMult(int scalar){
-        return this;
+    public Matrix scalarMult(Fraction scalar){
+        Fraction[][] scaledMatrix = new Fraction[r][c];
+        for(int i = 0;i<getRows();i++)
+        {
+            for(int j=0;j<getColumns();j++)
+            {
+                scaledMatrix[j][i] = this.get(i, j).multiply(scalar);
+            }
+        }
+        return (new Matrix(scaledMatrix));
     }
 }
