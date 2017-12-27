@@ -6,7 +6,7 @@ TODO:
    1. ~~Addition~~
    1. ~~Subtraction~~
 1. Scalar Multiplication
-   1. Multiplication
+   1. ~~Multiplication (Bavan)~~done I think, havent tested
    1. Division
 1. Matrix Multiplication
    1. Multiplication
